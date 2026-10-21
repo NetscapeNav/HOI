@@ -3,9 +3,6 @@
 (def whole
   (iterate inc 2))
 
-(defn composite [n]
-  (iterate #(+ % n) (* 2 n)))
-
 (defn eratosphen [numbers]
   (lazy-seq
     (let [prime (first numbers)
