@@ -23,12 +23,19 @@ sourceSets {
             srcDir 'src/main/clojure'
         }
     }
+
+    test {
+        resources {
+            srcDir 'src/test/clojure'
+        }
+    }
 }
 
-tasks.register('runClojure', JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
+tasks.register('testClojure', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
     mainClass = 'clojure.main'
-    args '-m', 'c2.core'
+    args '-m', 'c2.test-runner'
 }
 
 test {
